@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "751781753215",
+    "project_id": "barbergo-11b34",
+    "storage_bucket": "barbergo-11b34.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:751781753215:android:3fa8fd1da6df94838b6a4a",
+        "android_client_info": {
+          "package_name": "com.example.barbergo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBNiiITsPLAMw0ZSA28T6GO4iPAMN_3EQk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

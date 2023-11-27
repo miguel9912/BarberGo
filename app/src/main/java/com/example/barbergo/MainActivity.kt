@@ -8,9 +8,10 @@ import android.util.Log
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
-import com.example.barbergo.databinding.ActivityMainBinding
 import com.example.barbergo.Home
 import com.example.barbergo.Proveedor
+import com.example.barbergo.R
+import com.example.barbergo.databinding.ActivityMainBinding
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient

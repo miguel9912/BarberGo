@@ -35,7 +35,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
-        //setContentView(R.layout.activity_main)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -46,7 +45,7 @@ class MainActivity : AppCompatActivity() {
             if (binding.edEmail.text.isNotEmpty() && binding.edPass.text.isNotEmpty()){
                 firebaseauth.createUserWithEmailAndPassword(binding.edEmail.text.toString(),binding.edPass.text.toString()).addOnCompleteListener {
                     if (it.isSuccessful){
-                        irHome(it.result?.user?.email?:"", Proveedor.BASIC)  //Esto de los interrogantes es por si está vacío el email, que enviaría una cadena vacía.
+                        irHome(it.result?.user?.email?:"", Proveedor.BASIC)
                     } else {
                         showAlert("Error registrando al usuario.")
                     }

@@ -31,6 +31,10 @@ class Register : AppCompatActivity() {
             irMain()
         }
 
+        binding.btnContacts.setOnClickListener{
+            irContacts()
+        }
+
 
     }
 
@@ -38,5 +42,11 @@ class Register : AppCompatActivity() {
         val mainIntent = Intent(this, MainActivity::class.java).apply {
         }
         startActivity(mainIntent)
+    }
+
+    private fun irContacts(){
+        val contactsIntent = Intent(this, Ventana2::class.java).apply {
+        }
+        startActivity(contactsIntent)
     }
 }

@@ -18,7 +18,7 @@ class MainScreen : AppCompatActivity()  {
         setContentView(binding.root)
 
         binding.btnAnadirClientes.setOnClickListener {
-
+            irClientes()
         }
 
         binding.btnVolverScreen.setOnClickListener{
@@ -32,6 +32,12 @@ class MainScreen : AppCompatActivity()  {
         val homeIntent = Intent(this, MainActivity::class.java).apply {
         }
         startActivity(homeIntent)
+    }
+
+    private fun irClientes(){
+        val clientsIntent = Intent(this, Ventana2::class.java).apply {
+        }
+        startActivity(clientsIntent)
     }
 
 }

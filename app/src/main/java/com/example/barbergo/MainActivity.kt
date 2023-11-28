@@ -42,7 +42,8 @@ class MainActivity : AppCompatActivity() {
         firebaseauth = FirebaseAuth.getInstance()
         //------------------------------ Autenticación con email y password ------------------------------------
         binding.btRegistrar.setOnClickListener {
-            if (binding.edEmail.text.isNotEmpty() && binding.edPass.text.isNotEmpty()){
+            irRegister()
+            /*if (binding.edEmail.text.isNotEmpty() && binding.edPass.text.isNotEmpty()){
                 firebaseauth.createUserWithEmailAndPassword(binding.edEmail.text.toString(),binding.edPass.text.toString()).addOnCompleteListener {
                     if (it.isSuccessful){
                         irHome(it.result?.user?.email?:"", Proveedor.BASIC)
@@ -55,7 +56,7 @@ class MainActivity : AppCompatActivity() {
             }
             else {
                 showAlert("Rellene los campos")
-            }
+            }*/
         }
 
         binding.btLogin.setOnClickListener {
@@ -165,6 +166,11 @@ class MainActivity : AppCompatActivity() {
             putExtra("nombre",nombre)
         }
         startActivity(homeIntent)
+    }
+    private fun irRegister(){
+        val registerIntent = Intent(this, Register::class.java).apply {
+        }
+        startActivity(registerIntent)
     }
 
 

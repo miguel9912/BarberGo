@@ -40,7 +40,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
-        //setContentView(R.layout.activity_main)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         firebaseauth = FirebaseAuth.getInstance()
@@ -48,10 +47,11 @@ class MainActivity : AppCompatActivity() {
         //Para la autenticación, de cualquier tipo.
         //------------------------------ Autenticación con email y password ------------------------------------
         binding.btRegistrar.setOnClickListener {
-            if (binding.edEmail.text.isNotEmpty() && binding.edPass.text.isNotEmpty()){
+            irRegister()
+            /*if (binding.edEmail.text.isNotEmpty() && binding.edPass.text.isNotEmpty()){
                 firebaseauth.createUserWithEmailAndPassword(binding.edEmail.text.toString(),binding.edPass.text.toString()).addOnCompleteListener {
                     if (it.isSuccessful){
-                        irHome(it.result?.user?.email?:"", Proveedor.BASIC)  //Esto de los interrogantes es por si está vacío el email, que enviaría una cadena vacía.
+                        irHome(it.result?.user?.email?:"", Proveedor.BASIC)
                     } else {
                         showAlert("Error registrando al usuario.")
                     }
@@ -61,9 +61,12 @@ class MainActivity : AppCompatActivity() {
             }
             else {
                 showAlert("Rellene los campos")
-            }
+            }*/
         }
 
+        binding.clients.setOnClickListener{
+            irCLientes()
+        }
         binding.btLogin.setOnClickListener {
             if (binding.edEmail.text.isNotEmpty() && binding.edPass.text.isNotEmpty()){
                 firebaseauth.signInWithEmailAndPassword(binding.edEmail.text.toString(),binding.edPass.text.toString()).addOnCompleteListener {
@@ -177,6 +180,17 @@ class MainActivity : AppCompatActivity() {
             putExtra("nombre",nombre)
         }
         startActivity(homeIntent)
+    }
+    private fun irRegister(){
+        val registerIntent = Intent(this, Register::class.java).apply {
+        }
+        startActivity(registerIntent)
+    }
+
+    private fun irCLientes(){
+        val registerIntent = Intent(this, VentanaContactos::class.java).apply {
+        }
+        startActivity(registerIntent)
     }
 
 

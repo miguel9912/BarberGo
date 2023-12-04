@@ -95,17 +95,18 @@ class VentanaContactos : AppCompatActivity(), AdapterClass.ClickListener {
     private fun irAVentanaAnadir() {
         //Este método nos lleva a la ventana de manea normal, pasando datos pero no esperas que la segunda devuelva datos.
         //comentado está pasando los atributos individualmente. he optado por pasar un objeto Persona (debe ser serializable)
-        var miIntent: Intent = Intent(this, Ventana2::class.java)
         /*miIntent.putExtra("nombre", binding.cajaNombre.text.toString())
         miIntent.putExtra("edad", binding.cajaEdad.text.toString())*/
-        var dc = modelo.Cliente(
+        /*var dc = modelo.Cliente(
             R.drawable.cara,
             "CLIENTE X",
             getString(R.string.indicaciones_cliente1),
             R.drawable.cara,
             R.drawable.cara
-        )
+        )*/
         //miIntent.putExtra("obj",dc)
+        var miIntent: Intent = Intent(this, Ventana2::class.java)
+        //miIntent.putExtra()
         startActivity(miIntent)
     }
 }

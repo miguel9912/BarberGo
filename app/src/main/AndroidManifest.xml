@@ -12,9 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BarberGo"
         tools:targetApi="31">
-        <activity
-            android:name=".Home"
-            android:exported="false" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -24,6 +22,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".UsoStorage"
+            android:exported="false" />
+        <activity
+            android:name=".Home"
+            android:exported="false" />
+        <activity
+            android:name=".Ventana2"
+            android:exported="false" />
+        <activity
+            android:name=".VentanaContactos"
+            android:exported="false" />
     </application>
 
 </manifest>

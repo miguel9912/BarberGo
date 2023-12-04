@@ -19,6 +19,8 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.ktx.storage
 
 import java.io.File
 
@@ -30,6 +32,9 @@ class MainActivity : AppCompatActivity() {
     //Para la autenticación, de cualquier tipo.
     private lateinit var firebaseauth : FirebaseAuth
     private lateinit var googleSignInClient: GoogleSignInClient
+    var storage = Firebase.storage
+    // Crea una referencia con la instancia singleton FirebaseStorage y con una llamada al método reference.
+    var storageRef = storage.reference
 
     val TAG = "ACSCO"
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,9 +43,9 @@ class MainActivity : AppCompatActivity() {
         //setContentView(R.layout.activity_main)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        firebaseauth = FirebaseAuth.getInstance()
 
         //Para la autenticación, de cualquier tipo.
-        firebaseauth = FirebaseAuth.getInstance()
         //------------------------------ Autenticación con email y password ------------------------------------
         binding.btRegistrar.setOnClickListener {
             if (binding.edEmail.text.isNotEmpty() && binding.edPass.text.isNotEmpty()){
@@ -93,6 +98,12 @@ class MainActivity : AppCompatActivity() {
         binding.btGoogle.setOnClickListener {
             loginEnGoogle()
         }
+
+        binding.btnStorage.setOnClickListener() {
+            val intent = Intent(this, UsoStorage::class.java).apply {}
+            startActivity(intent)
+        }
+
     }
 
     //******************************* Para el login con Google ******************************
@@ -167,6 +178,7 @@ class MainActivity : AppCompatActivity() {
         }
         startActivity(homeIntent)
     }
+
 
 
     override fun onDestroy() {

@@ -11,7 +11,7 @@ import com.example.barbergo.databinding.ActivityVentana2Binding
 
 
 class Ventana2 : AppCompatActivity() {
-    lateinit var binding: ActivityVentana2Binding
+    private lateinit var binding: ActivityVentana2Binding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Log.e("ACSCO", "ONCREATE(), Ventana 2")
@@ -42,14 +42,9 @@ class Ventana2 : AppCompatActivity() {
         //Devolver datos a la ventana 1 de forma deprecated.
         binding.btDevolver.setOnClickListener {
             // Get the text from the EditText
-            val nombre = binding.cajaNombre.text.toString()
-            val stringToPassBack = binding.descripcion.text.toString()
+            var miIntent: Intent = Intent(this, VentanaContactos::class.java)
+            startActivity(miIntent)
 
-            // Put the String to pass back into an Intent and close this activity
-            val intent = Intent()
-            intent.putExtra("keyName", stringToPassBack)
-            setResult(Activity.RESULT_OK, intent)//si cancelase o no rellena, se pasa RESULT_CANCELED
-            finish()
         }
     }
     override fun onStart() {

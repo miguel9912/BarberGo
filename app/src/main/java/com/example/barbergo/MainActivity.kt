@@ -59,6 +59,9 @@ class MainActivity : AppCompatActivity() {
             }*/
         }
 
+        binding.clients.setOnClickListener{
+            irCLientes()
+        }
         binding.btLogin.setOnClickListener {
             if (binding.edEmail.text.isNotEmpty() && binding.edPass.text.isNotEmpty()){
                 firebaseauth.signInWithEmailAndPassword(binding.edEmail.text.toString(),binding.edPass.text.toString()).addOnCompleteListener {
@@ -169,6 +172,12 @@ class MainActivity : AppCompatActivity() {
     }
     private fun irRegister(){
         val registerIntent = Intent(this, Register::class.java).apply {
+        }
+        startActivity(registerIntent)
+    }
+
+    private fun irCLientes(){
+        val registerIntent = Intent(this, VentanaContactos::class.java).apply {
         }
         startActivity(registerIntent)
     }

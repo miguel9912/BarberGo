@@ -16,6 +16,12 @@
             android:name=".Home"
             android:exported="false" />
         <activity
+            android:name=".VentanaContactos"
+            android:exported="false" />
+        <activity
+            android:name=".Ventana2"
+            android:exported="false" />
+        <activity
             android:name=".Register"
             android:exported="false" />
         <activity

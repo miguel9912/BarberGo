@@ -38,30 +38,40 @@ class FirstFragment : DialogFragment() {
     ): View? {
         // Inflate the layout for this fragment
         binding = FragmentFirstBinding.inflate(inflater, container, false)
-        var v = inflater.inflate(R.layout.fragment_first, container, false)
+        val v = inflater.inflate(R.layout.fragment_first, container, false)
         miFireStore = FirebaseFirestore.getInstance()
         txtName = binding.txtNombreCliente
         txtDesc = binding.txtDescripcionCliente
         btnAdd = binding.btnAnadirCliente
 
-
-        if(txtName.text.toString().isBlank() || txtDesc.text.toString().isBlank()){
-            Toast.makeText(context, "Hay campos sin rellenar", Toast.LENGTH_SHORT)
-        }else{
-            postCliente(txtName.text.toString(),txtDesc.text.toString())
+        binding.btnAnadirCliente.setOnClickListener {
+            if(txtName.text.toString().isBlank() || txtDesc.text.toString().isBlank()){
+                Toast.makeText(context, "Hay campos sin rellenar", Toast.LENGTH_SHORT).show()
+            }else{
+                Toast.makeText(context, "Información añadida existosamente", Toast.LENGTH_SHORT).show()
+                postCliente(txtName.text.toString(),txtDesc.text.toString())
+            }
         }
+
         return v
     }
 
     private fun postCliente(nombre: String, desc : String) {
-        map.put("NAME", nombre)
-        map.put("DESCRIPTION", desc)
+        /*map.put("NAME", nombre)
+        map.put("DESCRIPTION", desc)*/
+        val id = miFireStore.collection("client").document()
+        map = hashMapOf(
+            "NAME" to nombre,
+            "DESCRIPTION" to desc
+        )
 
-        miFireStore.collection("client").add(map).addOnSuccessListener {
-        Toast.makeText(context,"Cliente añadido exitosamente",Toast.LENGTH_SHORT)
-            dialog?.dismiss()
+        /*miFireStore.collection("client").add(map)*/
+        miFireStore.collection("client").document(id.id).set(map).addOnSuccessListener {
+
+        Toast.makeText(context,"Cliente añadido exitosamente",Toast.LENGTH_SHORT).show()
+        dialog?.dismiss()
         }.addOnFailureListener{
-            Toast.makeText(context,"No se ha añadido ningún cliente",Toast.LENGTH_SHORT)
+            Toast.makeText(context,"No se ha añadido ningún cliente",Toast.LENGTH_SHORT).show()
         }
     }
 

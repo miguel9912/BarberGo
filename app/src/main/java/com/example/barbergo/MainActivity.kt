@@ -106,6 +106,8 @@ class MainActivity : AppCompatActivity() {
         //este método es nuestro.
         val signInClient = googleSignInClient.signInIntent
         launcherVentanaGoogle.launch(signInClient)
+
+
         //milauncherVentanaGoogle.launch(signInClient)
     }
 
@@ -116,6 +118,7 @@ class MainActivity : AppCompatActivity() {
         if (result.resultCode == Activity.RESULT_OK){
             val task = GoogleSignIn.getSignedInAccountFromIntent(result.data)
             manejarResultados(task)
+
         }
     }
 
@@ -125,6 +128,7 @@ class MainActivity : AppCompatActivity() {
             val account : GoogleSignInAccount? = task.result
             if (account != null){
                 actualizarUI(account)
+
             }
         }
         else {
@@ -139,7 +143,8 @@ class MainActivity : AppCompatActivity() {
         firebaseauth.signInWithCredential(credential).addOnCompleteListener {
             if (it.isSuccessful){
                 //hacer account. y ver otras propiedades interesantes.
-                irHome(account.email.toString(),Proveedor.GOOGLE, account.displayName.toString())
+                irMainScreen()
+                //irHome(account.email.toString(),Proveedor.GOOGLE, account.displayName.toString())
             }
             else {
                 Toast.makeText(this,it.exception.toString(), Toast.LENGTH_SHORT).show()
@@ -179,9 +184,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun irMainScreen(){
-        val registerIntent = Intent(this, MainScreen::class.java).apply {
+        val mainIntent = Intent(this, MainScreen::class.java).apply {
         }
-        startActivity(registerIntent)
+        startActivity(mainIntent)
     }
 
 

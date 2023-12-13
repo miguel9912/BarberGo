@@ -7,5 +7,7 @@
     <string name="indicaciones_cliente4">Estas son las indicaciones del cliente 4</string>
     <string name="your_web_client_id">514109233141-a5qf8g52dhftl68l26nd4ed7fvdc8a88.apps.googleusercontent.com</string>
     <string name="titulo">BarberGo</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

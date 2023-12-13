@@ -20,7 +20,8 @@ class VentanaContactos : AppCompatActivity(), AdapterClass.ClickListener {
         super.onCreate(savedInstanceState)
         binding = ActivityVentanacontactosBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        val bundle = intent.extras
+        val nombre = bundle?.getString("nombre")
         imageIcons = arrayOf(R.drawable.cara, R.drawable.cara, R.drawable.cara, R.drawable.cara)
         images = arrayOf(R.drawable.cara, R.drawable.cara, R.drawable.cara, R.drawable.cara, R.drawable.cara, R.drawable.cara, R.drawable.cara, R.drawable.cara)
         titleList = arrayOf("CLIENTE 1", "CLIENTE 2", "CLIENTE 3", "CLIENTE 4")
@@ -40,39 +41,14 @@ class VentanaContactos : AppCompatActivity(), AdapterClass.ClickListener {
     private fun getData() {
         var dataClass: modelo.Cliente
         for (i in imageIcons.indices) {
-            dataClass=when(i){
-                0 -> modelo.Cliente(
+            dataClass =  modelo.Cliente(
                     imageIcons[i],
                     titleList[i],
                     getString(R.string.indicaciones_cliente1),
                     images[2 * i],
                     images[2 * i + 1]
                 )
-                1 -> modelo.Cliente(
-                    imageIcons[i],
-                    titleList[i],
-                    getString(R.string.indicaciones_cliente2),
-                    images[2 * i],
-                    images[2 * i + 1]
-                )
-                2 -> modelo.Cliente(
-                    imageIcons[i],
-                    titleList[i],
-                    getString(R.string.indicaciones_cliente3),
-                    images[2 * i],
-                    images[2 * i + 1]
-                )
-                3 -> modelo.Cliente(
-                    imageIcons[i],
-                    titleList[i],
-                    getString(R.string.indicaciones_cliente4),
-                    images[2 * i],
-                    images[2 * i + 1]
-                )
-
-                else ->
-                    modelo.Cliente(0, "", "", 0, 0)
-            }
+            
             cliente.add(dataClass)
 
         }
@@ -93,6 +69,7 @@ class VentanaContactos : AppCompatActivity(), AdapterClass.ClickListener {
         recyclerView.adapter?.notifyItemChanged(position)
     }
     private fun irAVentanaAnadir() {
+        //----------------- INTENTO 1 --------------------------------
         //Este método nos lleva a la ventana de manea normal, pasando datos pero no esperas que la segunda devuelva datos.
         //comentado está pasando los atributos individualmente. he optado por pasar un objeto Persona (debe ser serializable)
         /*miIntent.putExtra("nombre", binding.cajaNombre.text.toString())
@@ -105,6 +82,7 @@ class VentanaContactos : AppCompatActivity(), AdapterClass.ClickListener {
             R.drawable.cara
         )*/
         //miIntent.putExtra("obj",dc)
+        //--------------------------------- INTENTO 2 -------------------------
         var miIntent: Intent = Intent(this, Ventana2::class.java)
         //miIntent.putExtra()
         startActivity(miIntent)

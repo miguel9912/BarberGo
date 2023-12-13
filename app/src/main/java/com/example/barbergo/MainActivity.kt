@@ -8,9 +8,6 @@ import android.util.Log
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
-import com.example.barbergo.Home
-import com.example.barbergo.Proveedor
-import com.example.barbergo.R
 import com.example.barbergo.databinding.ActivityMainBinding
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
@@ -21,9 +18,6 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
-
-import java.io.File
-
 
 
 
@@ -64,8 +58,8 @@ class MainActivity : AppCompatActivity() {
             }*/
         }
 
-        binding.clients.setOnClickListener{
-            irCLientes()
+        binding.btnApp.setOnClickListener{
+            irMainScreen()
         }
         binding.btLogin.setOnClickListener {
             if (binding.edEmail.text.isNotEmpty() && binding.edPass.text.isNotEmpty()){
@@ -102,10 +96,7 @@ class MainActivity : AppCompatActivity() {
             loginEnGoogle()
         }
 
-        binding.btnStorage.setOnClickListener() {
-            val intent = Intent(this, UsoStorage::class.java).apply {}
-            startActivity(intent)
-        }
+
 
     }
 
@@ -187,8 +178,8 @@ class MainActivity : AppCompatActivity() {
         startActivity(registerIntent)
     }
 
-    private fun irCLientes(){
-        val registerIntent = Intent(this, VentanaContactos::class.java).apply {
+    private fun irMainScreen(){
+        val registerIntent = Intent(this, MainScreen::class.java).apply {
         }
         startActivity(registerIntent)
     }

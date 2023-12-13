@@ -3,10 +3,7 @@ package com.example.barbergo
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import modelo.Cliente
-import modelo.Clientes
 import android.content.Intent
-import android.app.Activity
 import com.example.barbergo.databinding.ActivityVentana2Binding
 
 
@@ -22,7 +19,7 @@ class Ventana2 : AppCompatActivity() {
         /*var nombre = intent.getStringExtra("nombre")
         var edad = intent.getStringExtra("edad")
         var persona:Persona = Persona(nombre,edad)*/
-        var dc : modelo.Cliente = intent.getSerializableExtra("obj") as modelo.Cliente
+        //var dc : modelo.Cliente = intent.getSerializableExtra("obj") as modelo.Cliente
         /*binding.cajaNombre.setText(dc.nombre)
         binding.cajaEdad.setText(p.edad)*/
 
@@ -42,9 +39,8 @@ class Ventana2 : AppCompatActivity() {
         //Devolver datos a la ventana 1 de forma deprecated.
         binding.btDevolver.setOnClickListener {
             // Get the text from the EditText
-            var miIntent: Intent = Intent(this, VentanaContactos::class.java)
-            startActivity(miIntent)
 
+            anadirContactos()
         }
     }
     override fun onStart() {
@@ -67,5 +63,18 @@ class Ventana2 : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
         Log.e("ACSCO", "ONDESTROY(), Ventana 2")
+    }
+
+    private fun anadirContactos(){
+        var miIntent = Intent(this, VentanaContactos::class.java).apply{
+            action = Intent.ACTION_SEND
+            type = "text/plain"
+            putExtra("nombre", binding.cajaNombre.text.toString())
+            putExtra("descripcion", binding.descripcion.text.toString())
+        }
+        if(miIntent.resolveActivity(packageManager) != null){
+            startActivity(miIntent)
+        }
+
     }
 }
